@@ -1,0 +1,101 @@
+.file-grid {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 8px 0 0 8px;
+}
+
+.file-grid  .file-item {
+    display: inline-grid;
+    cursor: pointer;
+    position: relative;
+    width: 198px;
+    height: 148px;
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: 0 8px 8px 0;
+    vertical-align: top;
+}
+
+.file-grid .file-item:hover {
+    background: dimgray;
+}
+
+.file-grid .icon {
+    height: 46px;
+    text-align: center;
+    position: relative;
+    top: calc(50% - 46px);
+    font-size: 42px;
+    color: white;
+}
+
+.file-grid .icon svg {
+    height: 46px;
+    width: 46px;
+    vertical-align: initial !important;
+}
+
+.file-grid .file-detail {
+    bottom: 0;
+    background: white;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4px 8px;
+}
+
+.file-grid .file-props {
+    display: flex;
+    justify-content: space-between;
+}
+
+.file-grid .filename {
+    overflow: hidden;
+    text-align: left;
+    font-size: 14px;
+}
+
+.file-grid .filesize {
+    display: inline;
+    text-align: left;
+    font-size: 10px;
+    color: gray;
+}
+
+.file-grid .filetime {
+    display: inline;
+    text-align: right;
+    font-size: 10px;
+    color: gray;
+}
+
+.context-menu {
+    position: fixed;
+    width: 200px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0px 6px 12px #00000025;
+}
+
+.context-menu .item {
+    cursor: pointer;
+    font-size: 14px;
+    height: 20px;
+    padding: 4px 8px;
+}
+
+.context-menu .item:hover {
+    background-color: deepskyblue;
+    color: white;
+}
+
+.context-menu .item:first-child {
+    border-radius: 4px 4px 0 0;
+}
+
+.context-menu .item:last-child {
+    border-radius: 0 0 4px 4px;
+}
