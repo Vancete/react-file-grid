@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
-import Octicon, {File, FileMedia, FilePdf, FileZip, FileDirectory} from '@primer/octicons-react'
+import Octicon, {File, FileMedia, FilePdf, FileZip, FileDirectory, Play, FileBinary} from '@primer/octicons-react'
 
 class FileGrid extends Component {
 
@@ -48,7 +48,8 @@ class FileGrid extends Component {
     }
 
     contextMenuEvent(e, file) {
-        this.setState({contextMenu: {hidden: false, x: e.pageX, y: e.pageY}, selectedFile: file})
+        e.stopPropagation()
+        this.setState({contextMenu: {hidden: false, x: e.clientX, y: e.clientY}, selectedFile: file})
         if (this.props.onRightClickFile) {
             this.props.onRightClickFile(file)
         }
@@ -59,6 +60,9 @@ class FileGrid extends Component {
             case undefined:
                     return(<Octicon icon={File} />)
 
+            case 'exe':
+                return(<Octicon icon={FileBinary} />)
+
             case 'folder':
                 return(<Octicon icon={FileDirectory} />)
 
@@ -67,6 +71,9 @@ class FileGrid extends Component {
             
             case 'pdf':
                     return(<Octicon icon={FilePdf} />) 
+
+            case 'video':
+                return(<Octicon icon={Play} />) 
             
             case 'zip':
                     return(<Octicon icon={FileZip} />) 
@@ -79,7 +86,7 @@ class FileGrid extends Component {
     render (){
         return(
             <React.Fragment>
-                <div className="file-grid" onClick={e => this.fileEvent(e, null)}>
+                <div className="file-grid" onClick={e => this.fileEvent(e, null)} onContextMenu={e => {this.contextMenuEvent(e, null)}}>
                     {this.props.files.map( item => {
                         return (
                             <div className="file-item"
